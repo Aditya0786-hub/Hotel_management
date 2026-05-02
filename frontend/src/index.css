@@ -4,19 +4,20 @@
 @theme {
   --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
   
-  /* Steel & Stone Gray Palette */
-  --color-luxury-steel: #2d3436; /* Deep comfortable text color */
-  --color-luxury-charcoal: #4b5563;
-  --color-luxury-slate: #64748b;
-  --color-luxury-mist: #f3f4f6;
-  --color-luxury-pearl: #f9fafb; /* Soft comfortable background */
+  /* Gold & Silver Luxury Palette */
+  --color-luxury-gold: #D4AF37;
+  --color-luxury-gold-light: #F9F6ED;
+  --color-luxury-silver: #94A3B8;
+  --color-luxury-silver-light: #E2E8F0;
+  --color-luxury-charcoal: #334155;
+  --color-luxury-pearl: #FAFAFA;
 }
 
 @layer base {
   body {
     font-family: 'Outfit', sans-serif;
     background-color: var(--color-luxury-pearl);
-    color: var(--color-luxury-steel);
+    color: var(--color-luxury-charcoal);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

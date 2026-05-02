@@ -16,7 +16,7 @@ const DashboardLayout = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#f9fafb] font-sans text-[#2d3436]">
+    <div className="min-h-screen bg-slate-50 font-sans text-[#334155]">
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div 
@@ -44,7 +44,7 @@ const DashboardLayout = () => {
           title={getTitle(location.pathname)} 
           onMenuClick={() => setSidebarOpen(true)} 
         />
-        <main className="flex-1 p-6 md:p-10 lg:p-16 bg-[#f9fafb]">
+        <main className="flex-1 p-6 md:p-10 lg:p-16 bg-slate-50">
           <div className="max-w-7xl mx-auto">
             <Outlet />
           </div>

@@ -14,78 +14,77 @@ import {
 } from 'lucide-react';
 
 const StatCard = ({ label, value, subtext, icon: Icon, color, bgClass }) => (
-  <div className="bg-white p-8 rounded-[48px] border border-slate-100 shadow-[0_4px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between h-52 group hover:shadow-xl transition-all duration-500">
+  <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between h-48 group hover:shadow-md transition-all duration-300">
     <div className="flex justify-between items-start">
-      <div className={`p-4 ${bgClass} rounded-3xl ${color} group-hover:scale-110 transition-transform`}>
-        <Icon size={24} strokeWidth={2.5} />
+      <div className={`p-3 ${bgClass} rounded-xl ${color} group-hover:scale-110 transition-transform`}>
+        <Icon size={22} strokeWidth={2} />
       </div>
-      <div className="w-2 h-2 rounded-full bg-slate-100 group-hover:bg-black transition-colors"></div>
     </div>
     <div>
-      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] mb-2">{label}</p>
+      <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">{label}</p>
       <div className="flex items-baseline gap-2">
-        <p className="text-4xl font-black text-[#2d3436] tracking-tighter">{value}</p>
-        <p className="text-xs font-bold text-slate-300 uppercase tracking-widest">{subtext}</p>
+        <p className="text-3xl font-bold text-[#334155] tracking-tight">{value}</p>
+        <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">{subtext}</p>
       </div>
     </div>
   </div>
 );
 
 const ChannelCard = ({ channel, onToggle }) => (
-  <div className="bg-white p-8 rounded-[48px] border border-slate-100 shadow-[0_4px_30px_rgba(0,0,0,0.01)] hover:shadow-2xl transition-all duration-500 group relative overflow-hidden">
+  <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group relative overflow-hidden">
     {channel.status === 'Error' && (
       <div className="absolute top-0 left-0 w-full h-1 bg-red-500"></div>
     )}
     
-    <div className="flex justify-between items-start mb-8">
-      <div className="flex items-center gap-5">
-        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500 ${
+    <div className="flex justify-between items-start mb-6">
+      <div className="flex items-center gap-4">
+        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 ${
           channel.active ? 'bg-slate-50' : 'bg-slate-100 opacity-50'
         }`}>
-          <Globe size={28} className={channel.active ? 'text-[#2d3436]' : 'text-slate-400'} />
+          <Globe size={24} className={channel.active ? 'text-[#334155]' : 'text-slate-400'} />
         </div>
         <div>
-          <h3 className="text-lg font-black text-[#2d3436] tracking-tight">{channel.name}</h3>
-          <p className="text-[9px] font-bold text-slate-300 uppercase tracking-widest mt-1">API Connection • {channel.mode}</p>
+          <h3 className="text-lg font-bold text-[#334155] tracking-tight">{channel.name}</h3>
+          <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mt-0.5">{channel.mode}</p>
         </div>
       </div>
       <button 
         onClick={() => onToggle(channel.id)}
-        className={`relative w-12 h-6 rounded-full transition-all duration-300 ${
-          channel.active ? 'bg-[#2d3436]' : 'bg-slate-200'
+        className={`relative w-10 h-5 rounded-full transition-all duration-300 ${
+          channel.active ? 'bg-[#D4AF37]' : 'bg-slate-200'
         }`}
       >
-        <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-all duration-300 ${
-          channel.active ? 'left-7' : 'left-1'
+        <div className={`absolute top-0.5 w-4 h-4 bg-white rounded-full transition-all duration-300 ${
+          channel.active ? 'left-5.5' : 'left-0.5'
         }`}></div>
       </button>
     </div>
 
-    <div className="grid grid-cols-2 gap-6 mb-8">
-      <div className="space-y-1">
-        <p className="text-[9px] font-black text-slate-300 uppercase tracking-widest">Last Sync</p>
-        <p className="text-xs font-black text-[#2d3436] uppercase">{channel.lastSync}</p>
+    <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className="space-y-0.5">
+        <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Last Sync</p>
+        <p className="text-xs font-bold text-[#334155] uppercase">{channel.lastSync}</p>
       </div>
-      <div className="space-y-1 text-right">
-        <p className="text-[9px] font-black text-slate-300 uppercase tracking-widest">Sync Quality</p>
-        <p className={`text-xs font-black ${
+      <div className="space-y-0.5 text-right">
+        <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Health</p>
+        <p className={`text-xs font-bold ${
           channel.quality > 95 ? 'text-green-500' : 'text-orange-500'
         }`}>{channel.quality}%</p>
       </div>
     </div>
 
     {/* Markup Indicator */}
-    <div className="mb-8 p-4 bg-blue-50/50 border border-blue-100 rounded-2xl flex items-center justify-between">
-      <span className="text-[9px] font-black text-blue-400 uppercase tracking-widest italic">Markup Rule</span>
-      <span className="text-xs font-black text-blue-600">{channel.markup}</span>
+    <div className="mb-6 p-3 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-between">
+      <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider italic">Markup Rule</span>
+      <span className="text-xs font-bold text-[#D4AF37]">{channel.markup}</span>
     </div>
 
-    <div className="flex items-center gap-3 pt-6 border-t border-slate-50">
-      <button className="flex-1 py-4 bg-slate-50 text-slate-400 rounded-2xl hover:bg-[#2d3436] hover:text-white transition-all text-[9px] font-black uppercase tracking-widest flex items-center justify-center gap-2">
+    <div className="flex items-center gap-2 pt-5 border-t border-slate-50">
+      <button className="flex-1 py-2.5 bg-[#334155] text-white rounded-lg hover:opacity-90 transition-all text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2">
         <Settings2 size={14} /> Configure
       </button>
-      <button className="p-4 bg-slate-50 text-slate-400 rounded-2xl hover:bg-slate-100 transition-all">
-        <RefreshCw size={16} />
+      <button className="p-2.5 bg-slate-50 text-slate-400 rounded-lg hover:bg-slate-100 transition-all border border-slate-100">
+        <RefreshCw size={14} />
       </button>
     </div>
   </div>
@@ -113,79 +112,79 @@ const ChannelManager = () => {
   };
 
   return (
-    <div className="space-y-12 sm:space-y-20 pb-20">
+    <div className="space-y-12 sm:space-y-16 pb-20">
       
       {/* Header Actions */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black text-[#2d3436] tracking-tighter">Channel Manager</h1>
-          <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] mt-3 flex items-center gap-3">
-            OTA Connectivity <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> <span className="text-[#2d3436]">Global Parity Active</span>
+          <h1 className="text-3xl font-bold text-[#334155] tracking-tight">Channel Manager</h1>
+          <p className="text-sm font-medium text-slate-400 mt-1 uppercase tracking-wider flex items-center gap-2">
+            OTA Connectivity <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> <span className="text-[#334155]">Global Parity Active</span>
           </p>
         </div>
-        <div className="flex items-center gap-4 w-full sm:w-auto">
+        <div className="flex items-center gap-3 w-full sm:w-auto">
           <button 
             onClick={syncAll}
             disabled={isSyncing}
-            className={`flex-1 sm:flex-none flex items-center justify-center gap-3 px-8 py-5 rounded-[28px] text-[10px] font-black uppercase tracking-widest transition-all shadow-xl ${
-              isSyncing ? 'bg-slate-100 text-slate-400' : 'bg-[#2d3436] text-white hover:opacity-90'
+            className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold transition-all shadow-sm ${
+              isSyncing ? 'bg-slate-100 text-slate-400' : 'bg-[#D4AF37] text-white hover:opacity-90'
             }`}
           >
-            <RefreshCw size={16} className={isSyncing ? 'animate-spin' : ''} /> 
-            {isSyncing ? 'Syncing All...' : 'Sync All Now'}
+            <RefreshCw size={18} className={isSyncing ? 'animate-spin' : ''} /> 
+            {isSyncing ? 'Syncing...' : 'Sync All Channels'}
           </button>
-          <button className="hidden sm:flex items-center justify-center p-5 bg-white border border-slate-100 rounded-2xl hover:shadow-md transition-all text-[#2d3436]">
+          <button className="hidden sm:flex items-center justify-center p-3 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-all text-[#334155]">
             <Plus size={20} />
           </button>
         </div>
       </div>
 
       {/* KPI Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10">
-        <StatCard label="Connected" value="04" subtext="Channels" icon={Link2} color="text-[#2d3436]" bgClass="bg-slate-50" />
-        <StatCard label="Sync Health" value="98%" subtext="Parity" icon={Zap} color="text-yellow-500" bgClass="bg-yellow-50" />
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+        <StatCard label="Connected" value="04" subtext="Channels" icon={Link2} color="text-[#334155]" bgClass="bg-slate-50" />
+        <StatCard label="Sync Health" value="98%" subtext="Parity" icon={Zap} color="text-[#D4AF37]" bgClass="bg-[#D4AF37]/10" />
         <StatCard label="Live Syncs" value="03" subtext="Active" icon={RefreshCw} color="text-blue-500" bgClass="bg-blue-50" />
         <StatCard label="Security" value="SSL" subtext="Verified" icon={ShieldCheck} color="text-green-500" bgClass="bg-green-50" />
       </div>
 
       {/* Main Channel Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {channels.map((channel) => (
           <ChannelCard key={channel.id} channel={channel} onToggle={toggleChannel} />
         ))}
         
         {/* Add New Channel Placeholder */}
-        <button className="group bg-slate-50 border-2 border-dashed border-slate-200 rounded-[48px] p-8 flex flex-col items-center justify-center gap-4 text-slate-300 hover:text-[#2d3436] hover:border-[#2d3436]/20 transition-all h-full min-h-[300px]">
-          <div className="w-16 h-16 rounded-full border-2 border-dashed border-slate-200 flex items-center justify-center group-hover:scale-110 transition-transform">
-            <Plus size={32} />
+        <button className="group bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 text-slate-300 hover:text-[#334155] hover:border-[#D4AF37]/40 transition-all h-full min-h-[250px]">
+          <div className="w-12 h-12 rounded-full border-2 border-dashed border-slate-200 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <Plus size={24} />
           </div>
-          <span className="text-[10px] font-black uppercase tracking-widest">Connect New Channel</span>
+          <span className="text-[10px] font-bold uppercase tracking-widest">Connect New Channel</span>
         </button>
       </div>
 
       {/* Global Availability Snapshot */}
-      <div className="bg-[#2d3436] p-10 sm:p-12 rounded-[56px] shadow-2xl relative overflow-hidden group">
+      <div className="bg-[#334155] p-8 sm:p-10 rounded-2xl shadow-xl relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -mr-48 -mt-48 group-hover:bg-white/10 transition-colors"></div>
         <div className="relative z-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-10 mb-12">
-            <div className="space-y-4">
-              <h3 className="text-[12px] font-black text-white uppercase tracking-[0.25em] flex items-center gap-3">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
+            <div className="space-y-2">
+              <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
                 <Calendar size={18} className="text-white/40" /> 7-Day Parity Snapshot
               </h3>
-              <p className="text-xs text-white/60 font-bold">Real-time inventory currently being broadcasted to all active OTAs.</p>
+              <p className="text-xs text-white/50 font-medium">Real-time inventory currently being broadcasted to all active OTAs.</p>
             </div>
-            <button className="w-full md:w-auto px-10 py-5 bg-white text-[#2d3436] rounded-3xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center justify-center gap-3">
-              Full Inventory Grid <ArrowRight size={14} />
+            <button className="w-full md:w-auto px-8 py-3.5 bg-white text-[#334155] rounded-xl text-sm font-semibold hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
+              Full Inventory Grid <ArrowRight size={18} />
             </button>
           </div>
           
           {/* Simple Parity Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
             {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, idx) => (
-              <div key={day} className="bg-white/5 border border-white/10 p-6 rounded-[32px] text-center group/day hover:bg-white/10 transition-colors">
-                <p className="text-[9px] font-black text-white/40 uppercase tracking-widest mb-3">{day}</p>
-                <p className="text-2xl font-black text-white">14</p>
-                <p className="text-[8px] font-black text-green-500 uppercase tracking-widest mt-2">In Sync</p>
+              <div key={day} className="bg-white/5 border border-white/10 p-5 rounded-xl text-center group/day hover:bg-white/10 transition-colors">
+                <p className="text-[10px] font-semibold text-white/40 uppercase tracking-wider mb-2">{day}</p>
+                <p className="text-xl font-bold text-white">14</p>
+                <p className="text-[9px] font-bold text-green-400 uppercase tracking-wider mt-1">In Sync</p>
               </div>
             ))}
           </div>
